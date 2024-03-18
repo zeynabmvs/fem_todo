@@ -1,128 +1,130 @@
-@use '../util' as *;
+@use "../util" as *;
 
 .app {
-    position: absolute;
-    margin-top: rem(100);
-    width: 90%;
+  position: absolute;
+  margin-top: rem(100);
+  width: 90%;
 
-    @include breakpoint(medium) {
-        width: 40%;
-    }
+  @include breakpoint(medium) {
+    width: 60%;
+  }
 
-    &__header {}
+  @include breakpoint(large) {
+    width: 40%;
+  }
 
-    .item {
-        display: flex;
-        align-items: center;
-        background-color: var(--task-bg);
-        padding: rem(5) rem(20);
-        min-height: rem(50);
-    }
+  &__header {
+  }
 
-    &__main {
-        // cursor: pointer;
+  .item {
+    display: flex;
+    align-items: center;
+    background-color: var(--task-bg);
+    padding: rem(5) rem(20);
+    min-height: rem(50);
+  }
 
-        .task {
-            border-bottom: 1px solid var(--task-border);
-            color: var(--text-active);
+  &__main {
+    // cursor: pointer;
 
-            &:hover {
-                .delete_btn {
-                    opacity: 1;
-                }
-            }
+    .task {
+      border-bottom: 1px solid var(--task-border);
+      color: var(--text-active);
 
-            &.completed {
-                text-decoration: line-through;
-                color: var(--text-inactive);
-            }
+      &:hover {
+        .delete_btn {
+          opacity: 1;
+        }
+      }
 
-            p {
-                flex-grow: 1;
-            }
+      &.completed {
+        text-decoration: line-through;
+        color: var(--text-inactive);
+      }
 
-            .delete_btn {
-                float: right;
-                margin-left: auto;
-                position: relative;
+      p {
+        flex-grow: 1;
+      }
 
-                @include breakpoint(medium) {
-                    opacity: 0;
-                }
+      .delete_btn {
+        float: right;
+        margin-left: auto;
+        position: relative;
 
-                &:before {
-                    content: url('/images/icon-cross.svg');
-                    position: absolute;
-                    top: rem(-10);
-                    right: 0;
-                }
-            }
-
+        @include breakpoint(medium) {
+          opacity: 0;
         }
 
-        #add_task {
-            margin-bottom: rem(15);
-
-
-            input[type="text"] {
-                width: 100%;
-                background-color: var(--task-bg);
-                color: var(--text-active);
-                font-family: inherit;
-                font-size: inherit;
-
-            }
+        &:before {
+          content: url("/images/icon-cross.svg");
+          position: absolute;
+          top: rem(-10);
+          right: 0;
         }
-
-
+      }
     }
 
-    &__footer {
-        height: rem(50);
-        background-color: var(--task-bg);
-        font-size: rem(17);
+    #add_task {
+      margin-bottom: rem(15);
+
+      input[type="text"] {
+        width: 100%;
+        color: var(--text-active);
         font-family: inherit;
-        padding: 0 rem(20);
-        color: var(--text-inactive);
-        margin-bottom: rem(15);
+        font-size: inherit;
+        width: 100%;
+        border: none;
+        outline: none;
 
-        .items_count {
-            font-size: rem(13);
+        &:focus {
+          border: none;
         }
-
-        .clear_btn {
-            color: var(--text-inactive);
-
-            &:hover {
-                color: var(--text-active);
-            }
-        }
+      }
     }
-    &__filters {
-        a {
-            color: var(--text-inactive);
+  }
 
-            &:hover {
-                color: var(--text-active);
-            }
-            
-            &:focus {
-                color: var(--bright-blue)
+  &__footer {
+    height: rem(50);
+    background-color: var(--task-bg);
+    font-size: rem(17);
+    font-family: inherit;
+    padding: 0 rem(20);
+    color: var(--text-inactive);
+    margin-bottom: rem(15);
 
-            }
-            
-            &:not(:last-child) {
-                margin-right: rem(15);
-            }
-        }
+    .items_count {
+      font-size: rem(13);
     }
 
+    .clear_btn {
+      color: var(--text-inactive);
 
-    .tip {
-        text-align: center;
-        color: var(--text-inactive);
-        margin: rem(50) 0;
-
+      &:hover {
+        color: var(--text-active);
+      }
     }
+  }
+  &__filters {
+    a {
+      color: var(--text-inactive);
 
+      &:hover {
+        color: var(--text-active);
+      }
+
+      &:focus {
+        color: var(--bright-blue);
+      }
+
+      &:not(:last-child) {
+        margin-right: rem(15);
+      }
+    }
+  }
+
+  .tip {
+    text-align: center;
+    color: var(--text-inactive);
+    margin: rem(50) 0;
+  }
 }

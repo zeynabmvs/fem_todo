@@ -33,8 +33,8 @@ function App() {
           </button>
         </div>
 
-        {/* <Tasks />
-        <Footer /> */}
+        <Tasks />
+        <Footer />
         <p className="tip">Drag and drop to reorder list</p>
       </section>
     </ThemeContext.Provider>
