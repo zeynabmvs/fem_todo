@@ -22,6 +22,13 @@ export default function Tasks() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const toggleCompleted = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
   return (
     <div className="app__main">
       <form id="add_task" onSubmit={handleSubmit}>
@@ -47,9 +54,12 @@ export default function Tasks() {
               key={index}
             >
               <input
-                className="checkbox"
+                className={
+                  "checkbox " + (todo.completed ? "completed" : "active")
+                }
                 type="checkbox"
                 maxLength="200"
+                onClick={() => toggleCompleted(todo.id)}
               ></input>
               <p>{todo.text}</p>
               <button
