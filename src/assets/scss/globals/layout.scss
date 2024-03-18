@@ -1,0 +1,27 @@
+@use "../util" as *;
+
+// default background image is light background, if user has a prefer color scheme
+// and it is dark the query below will set the background image to dark background
+
+.container {
+  padding: 0 rem(60);
+  max-width: rem(1110);
+}
+
+.main {
+  height: 100vh; //better solution?
+  position: relative;
+  background-color: var(--background);
+  background-image: var(--background-img-mobile);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100% 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @include breakpoint(medium) {
+    background-image: var(--background-img-desktop);
+    background-size: 100% 300px;
+  }
+}
