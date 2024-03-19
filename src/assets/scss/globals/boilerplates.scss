@@ -20,6 +20,10 @@ body {
   box-sizing: inherit;
 }
 
+button {
+  font-family: inherit; /* Inherit font family from parent */
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -90,6 +94,7 @@ button {
   cursor: pointer;
 }
 
+
 .border {
 
   &-r-all {
@@ -100,4 +105,8 @@ button {
       border-bottom-left-radius: var(--border-radius-size);
       border-bottom-right-radius: var(--border-radius-size);
   }
+}
+
+.hide {
+  display: none;
 }

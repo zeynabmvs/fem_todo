@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Tasks from "./components/Tasks";
-import Footer from "./components/Footer";
 import ThemeContext from "./ThemeContext";
 
 function App() {
@@ -22,11 +21,7 @@ function App() {
           <h1>TODO</h1>
           <button
             onClick={() => {
-              if (theme == "dark") {
-                setTheme("light");
-              } else {
-                setTheme("dark");
-              }
+              theme == "dark" ? setTheme("light") : setTheme("dark");
             }}
           >
             <img src={buttonImgSources[theme]} />
@@ -34,7 +29,6 @@ function App() {
         </div>
 
         <Tasks />
-        <Footer />
         <p className="tip">Drag and drop to reorder list</p>
       </section>
     </ThemeContext.Provider>
