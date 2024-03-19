@@ -1,8 +1,17 @@
-:root {
-	--font-josefin: 'Josefin Sans', sans-serif;
+
+@font-face {
+	font-family: 'Josefin Sans';
+	src: url('./fonts/JosefinSans-Bold.ttf');
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'Josefin Sans';
+	src: url('./fonts/JosefinSans-Regular.ttf');
+	font-weight: 400;
 }
 
 body {
-	font-family: var(--font-josefin);
+	font-family: 'Josefin Sans', sans-serif;
 	font-size: 18px;
 }
