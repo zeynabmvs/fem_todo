@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const initialTasks = [
   { id: 12345678, text: "buy groceries", completed: false },
@@ -7,9 +7,23 @@ const initialTasks = [
 ];
 
 export default function Tasks() {
+  const getTodosFromLocal = () => {
+    const savedTodods = localStorage.getItem("todos");
+    console.log("savedTodods");
+    if (savedTodods) {
+      return JSON.parse(savedTodods);
+    } else return initialTasks;
+  };
+
   const [inputValue, setInputValue] = useState("");
-  const [todos, setTodos] = useState(initialTasks);
+  const [todos, setTodos] = useState(getTodosFromLocal());
   const [currentFilter, setCurrentFilter] = useState("all");
+
+  useEffect(() => {
+    // Update todos
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim() === "") return;
