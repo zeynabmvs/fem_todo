@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react";
+import { ToDoContext, FilterContext } from "../contexts";
+import TaskForm from "./TaskForm";
+import TasksList from "./TasksList";
+import TaskFilters from "./TaskFilters";
 
 const initialTasks = [
   { id: 12345678, text: "buy groceries", completed: false },
@@ -9,7 +13,6 @@ const initialTasks = [
 export default function Tasks() {
   const getTodosFromLocal = () => {
     const savedTodods = localStorage.getItem("todos");
-    console.log("savedTodods");
     if (savedTodods) {
       return JSON.parse(savedTodods);
     } else return initialTasks;
@@ -23,14 +26,6 @@ export default function Tasks() {
     // Update todos
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue.trim() === "") return;
-    const newToDo = { id: Date.now(), text: inputValue, completed: false };
-    setTodos([...todos, newToDo]);
-    setInputValue("");
-  };
 
   const handleDelete = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -56,88 +51,33 @@ export default function Tasks() {
   };
   return (
     <>
-      <div className="app__main">
-        <form id="add_task" onSubmit={handleSubmit}>
-          <input
-            className="item border-r-all"
-            type="text"
-            name="new_task"
-            placeholder="Create a new todo..."
-            value={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-            }}
-          />
-        </form>
-
-        <div className="app_tasks">
-          {filteredTodos(currentFilter)
-            .sort((a, b) => b.id - a.id)
-            .map((todo, index) => {
-              return (
-                <div
-                  className={
-                    "task item " + (todo.completed ? "completed" : "active")
-                  }
-                  key={index}
-                >
-                  <input
-                    className={
-                      "checkbox " + (todo.completed ? "completed" : "active")
-                    }
-                    type="checkbox"
-                    maxLength="200"
-                    onClick={() => toggleCompleted(todo.id)}
-                  ></input>
-                  <p>{todo.text}</p>
-                  <button
-                    className="delete_btn"
-                    onClick={() => handleDelete(todo.id)}
-                  ></button>
-                </div>
-              );
-            })}
-        </div>
-      </div>
-      <div className="app__footer item flex flex-d-r flex-jc-sb flex-ai-c border-r-bottom">
-        <span className="items_count">
-          {todos.filter((todo) => !todo.completed).length} items Left
-        </span>
-        <div className="flex flex-jc-sb" style={{ gap: "8px" }}>
-          <button
-            className="footer_btn"
-            onClick={(e) => {
-              setCurrentFilter("all");
-            }}
-          >
-            all
-          </button>
-          <button
-            className="footer_btn"
-            onClick={(e) => {
-              setCurrentFilter("active");
-            }}
-          >
-            Active
-          </button>
-          <button
-            className="footer_btn"
-            onClick={(e) => {
-              setCurrentFilter("completed");
-            }}
-          >
-            Completed
-          </button>
-        </div>
-        <button
-          className="footer_btn"
-          onClick={(e) => {
-            setTodos(todos.filter((todo) => !todo.completed));
-          }}
-        >
-          Clear Completed
-        </button>
-      </div>
+      <ToDoContext.Provider
+        value={{ todos, setTodos, toggleCompleted, handleDelete }}
+      >
+        <FilterContext.Provider value={{ currentFilter, filteredTodos, setCurrentFilter }}>
+          <div className="app__main">
+            <TaskForm
+              inputValue={inputValue}
+              handleInputValue={setInputValue}
+            />
+            <TasksList />
+          </div>
+          <div className="app__footer item flex flex-d-r flex-jc-sb flex-ai-c border-r-bottom">
+            <span className="items_count">
+              {todos.filter((todo) => !todo.completed).length} items Left
+            </span>
+            <TaskFilters />
+            <button
+              className="footer_btn"
+              onClick={(e) => {
+                setTodos(todos.filter((todo) => !todo.completed));
+              }}
+            >
+              Clear Completed
+            </button>
+          </div>
+        </FilterContext.Provider>
+      </ToDoContext.Provider>
     </>
   );
 }
