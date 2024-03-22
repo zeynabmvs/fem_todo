@@ -1,17 +1,16 @@
-
 @font-face {
-	font-family: 'Josefin Sans';
-	src: url('./fonts/JosefinSans-Bold.ttf');
-	font-weight: 700;
+  font-family: "Josefin Sans";
+  src: url("/fonts/JosefinSans-Bold.ttf") format("truetype");
+  font-weight: 700;
 }
 
 @font-face {
-	font-family: 'Josefin Sans';
-	src: url('./fonts/JosefinSans-Regular.ttf');
-	font-weight: 400;
+  font-family: "Josefin Sans";
+  src: url("/fonts/JosefinSans-Regular.ttf") format("truetype");
+  font-weight: 400;
 }
 
 body {
-	font-family: 'Josefin Sans', sans-serif;
-	font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
 }
