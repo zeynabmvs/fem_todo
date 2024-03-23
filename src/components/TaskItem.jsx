@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ToDoContext } from "../contexts";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd";
 
 export default function TaskItem({ todo, index }) {
   const { toggleCompleted, handleDelete } = useContext(ToDoContext);

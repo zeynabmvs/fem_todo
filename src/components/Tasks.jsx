@@ -24,7 +24,6 @@ export default function Tasks() {
   const [currentFilter, setCurrentFilter] = useState("all");
 
   useEffect(() => {
-    console.log("effect");
     // Update todos
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -54,12 +53,10 @@ export default function Tasks() {
 
   function handleOnDragEnd(result) {
     if (!result.destination) return;
-    setTodos(prevTodos => {
-      const newTodos = Array.from(prevTodos);
-      const [draggedItem] = newTodos.splice(result.source.index, 1);
-      newTodos.splice(result.destination.index, 0, draggedItem);
-      return newTodos;
-    });
+    const newTodos = Array.from(todos);
+    const [draggedItem] = newTodos.splice(result.source.index, 1);
+    newTodos.splice(result.destination.index, 0, draggedItem);
+    setTodos(newTodos);
   }
 
   return (
@@ -67,35 +64,33 @@ export default function Tasks() {
       <ToDoContext.Provider
         value={{ todos, setTodos, toggleCompleted, handleDelete }}
       >
-            <DragDropContext onDragEnd={handleOnDragEnd}>
-
-        <FilterContext.Provider
-          value={{ currentFilter, filteredTodos, setCurrentFilter }}
-        >
-          <div className="app__main">
-            <TaskForm
-              inputValue={inputValue}
-              handleInputValue={setInputValue}
-            />
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <FilterContext.Provider
+            value={{ currentFilter, filteredTodos, setCurrentFilter }}
+          >
+            <div className="app__main">
+              <TaskForm
+                inputValue={inputValue}
+                handleInputValue={setInputValue}
+              />
               <TasksList />
-          </div>
-          <div className="app__footer item flex flex-d-r flex-jc-sb flex-ai-c border-r-bottom">
-            <span className="items_count">
-              {todos.filter((todo) => !todo.completed).length} items Left
-            </span>
-            <TaskFilters />
-            <button
-              className="footer_btn"
-              onClick={(e) => {
-                setTodos(todos.filter((todo) => !todo.completed));
-              }}
-            >
-              Clear Completed
-            </button>
-          </div>
-        </FilterContext.Provider>
-            </DragDropContext>
-
+            </div>
+            <div className="app__footer item flex flex-d-r flex-jc-sb flex-ai-c border-r-bottom">
+              <span className="items_count">
+                {todos.filter((todo) => !todo.completed).length} items Left
+              </span>
+              <TaskFilters />
+              <button
+                className="footer_btn"
+                onClick={(e) => {
+                  setTodos(todos.filter((todo) => !todo.completed));
+                }}
+              >
+                Clear Completed
+              </button>
+            </div>
+          </FilterContext.Provider>
+        </DragDropContext>
       </ToDoContext.Provider>
     </>
   );

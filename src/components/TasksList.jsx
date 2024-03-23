@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ToDoContext, FilterContext } from "../contexts";
 import TaskItem from "./TaskItem";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Droppable } from "react-beautiful-dnd";
 
 export default function TasksList() {
   const { currentFilter, filteredTodos } = useContext(FilterContext);
@@ -23,6 +23,5 @@ export default function TasksList() {
         </ul>
       )}
     </Droppable>
-
   );
 }
