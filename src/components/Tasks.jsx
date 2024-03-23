@@ -3,6 +3,7 @@ import { ToDoContext, FilterContext } from "../contexts";
 import TaskForm from "./TaskForm";
 import TasksList from "./TasksList";
 import TaskFilters from "./TaskFilters";
+import { DragDropContext } from "react-beautiful-dnd";
 
 const initialTasks = [
   { id: 12345678, text: "buy groceries", completed: false },
@@ -23,6 +24,7 @@ export default function Tasks() {
   const [currentFilter, setCurrentFilter] = useState("all");
 
   useEffect(() => {
+    console.log("effect");
     // Update todos
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -49,18 +51,33 @@ export default function Tasks() {
         return todos;
     }
   };
+
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+    setTodos(prevTodos => {
+      const newTodos = Array.from(prevTodos);
+      const [draggedItem] = newTodos.splice(result.source.index, 1);
+      newTodos.splice(result.destination.index, 0, draggedItem);
+      return newTodos;
+    });
+  }
+
   return (
     <>
       <ToDoContext.Provider
         value={{ todos, setTodos, toggleCompleted, handleDelete }}
       >
-        <FilterContext.Provider value={{ currentFilter, filteredTodos, setCurrentFilter }}>
+            <DragDropContext onDragEnd={handleOnDragEnd}>
+
+        <FilterContext.Provider
+          value={{ currentFilter, filteredTodos, setCurrentFilter }}
+        >
           <div className="app__main">
             <TaskForm
               inputValue={inputValue}
               handleInputValue={setInputValue}
             />
-            <TasksList />
+              <TasksList />
           </div>
           <div className="app__footer item flex flex-d-r flex-jc-sb flex-ai-c border-r-bottom">
             <span className="items_count">
@@ -77,6 +94,8 @@ export default function Tasks() {
             </button>
           </div>
         </FilterContext.Provider>
+            </DragDropContext>
+
       </ToDoContext.Provider>
     </>
   );
