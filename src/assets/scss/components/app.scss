@@ -12,10 +12,7 @@
   @include breakpoint(large) {
     width: 40%;
   }
-
-  &__header {
-  }
-
+  
   .item {
     display: flex;
     align-items: center;
@@ -25,11 +22,15 @@
   }
 
   &__main {
-    // cursor: pointer;
 
     .task {
       border-bottom: 1px solid var(--task-border);
       color: var(--text-active);
+
+      &:first-child {
+        border-top-left-radius: var(--border-radius-size);
+        border-top-right-radius: var(--border-radius-size);
+      }
 
       &:hover {
         .delete_btn {
@@ -103,7 +104,6 @@
       &:hover {
         color: var(--text-active);
       }
-  
     }
     .footer_filters {
       gap: 8px;
@@ -118,8 +118,8 @@
       button {
         font-size: 17px;
 
-        &.active{
-          color: var(--bright-blue)
+        &.active {
+          color: var(--bright-blue);
         }
       }
 
