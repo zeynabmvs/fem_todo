@@ -20,23 +20,12 @@
   --very-dark-grayish-blue: hsl(233, 14%, 35%);
   --very-dark-grayish-blue2: hsl(237, 14%, 26%);
 
-  // The default color scheme is light  
-  --background: var(--very-light-grayish-blue-l);
-  --task-bg: var(--very-light-gray-l);
-  --text-active: var(--very-dark-grayish-blue-l);
-  --text-inactive: var(--light-grayish-blue-l);
-  --task-border: var(--light-grayish-blue-l)
-}
-
-// if user has a preferd color scheme and it is dark it will render this media query
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--very-dark-blue);
-    --task-bg: var(--very-dark-desaturated-blue);
-    --text-active: var(--light-grayish-blue);
-    --text-inactive: var(--dark-grayish-blue);
-    --task-border: var(--dark-grayish-blue)
-  }
+  // The default color scheme is dark, in case <body> doesn't have a dark/light class
+  --background: var(--very-dark-blue);
+  --task-bg: var(--very-dark-desaturated-blue);
+  --text-active: var(--light-grayish-blue);
+  --text-inactive: var(--dark-grayish-blue);
+  --task-border: var(--dark-grayish-blue);
 }
 
 // These two classes are duplicates of above styles
@@ -51,8 +40,8 @@ body.light {
     display: none;
   }
 
-  --background-img-mobile: url('/images/bg-mobile-light.jpg');
-  --background-img-desktop: url('/images/bg-desktop-light.jpg');
+  --background-img-mobile: url("/images/bg-mobile-light.jpg");
+  --background-img-desktop: url("/images/bg-desktop-light.jpg");
 }
 
 body.dark {
@@ -66,6 +55,6 @@ body.dark {
     display: none;
   }
 
-  --background-img-mobile: url('/images/bg-mobile-dark.jpg');
-  --background-img-desktop: url('/images/bg-desktop-dark.jpg');
+  --background-img-mobile: url("/images/bg-mobile-dark.jpg");
+  --background-img-desktop: url("/images/bg-desktop-dark.jpg");
 }

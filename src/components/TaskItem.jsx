@@ -13,7 +13,6 @@ export default function TaskItem({ todo, index }) {
     >
       {(provided) => (
         <li
-          key={todo.id.toString()}
           className={"task item " + (todo.completed ? "completed" : "active")}
           ref={provided.innerRef}
           {...provided.dragHandleProps}
