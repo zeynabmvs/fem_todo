@@ -103,6 +103,7 @@
       &:hover {
         color: var(--text-active);
       }
+  
     }
     .footer_filters {
       gap: 8px;
@@ -113,7 +114,14 @@
       margin-top: rem(15);
       border-radius: var(--border-radius-size);
       justify-content: center;
-      font-size: 24px;
+
+      button {
+        font-size: 17px;
+
+        &.active{
+          color: var(--bright-blue)
+        }
+      }
 
       @include breakpoint(medium) {
         position: relative;
@@ -143,6 +151,6 @@
   .tip {
     text-align: center;
     color: var(--text-inactive);
-    margin: rem(50) 0;
+    margin: rem(80) 0;
   }
 }

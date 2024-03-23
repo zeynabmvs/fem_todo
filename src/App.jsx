@@ -18,7 +18,7 @@ function App() {
           <ToggleThemeBtn />
         </div>
         <Tasks />
-        {/* <p className="tip">Drag and drop to reorder list</p> */}
+        <p className="tip">Drag and drop to reorder list</p>
       </section>
     </ThemeContext.Provider>
   );
