@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { FilterContext } from "../contexts";
 
 export default function TaskFilters() {
-    const {setCurrentFilter} = useContext(FilterContext)
+  const { setCurrentFilter } = useContext(FilterContext);
 
   return (
-    <div className="flex flex-jc-sb" style={{ gap: "8px" }}>
+    <div className="footer_filters item">
       <button
         className="footer_btn"
         onClick={(e) => {
