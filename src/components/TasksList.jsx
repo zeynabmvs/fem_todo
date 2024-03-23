@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ToDoContext, FilterContext } from "../contexts";
+import { FilterContext } from "../contexts";
 import TaskItem from "./TaskItem";
 import { Droppable } from "react-beautiful-dnd";
 
@@ -15,7 +15,6 @@ export default function TasksList() {
           {...provided.droppableProps}
         >
           {filteredTodos(currentFilter)
-            .sort((a, b) => b.id - a.id)
             .map((todo, index) => {
               return <TaskItem todo={todo} index={index} key={index} />;
             })}

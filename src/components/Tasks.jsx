@@ -13,10 +13,8 @@ const initialTasks = [
 
 export default function Tasks() {
   const getTodosFromLocal = () => {
-    const savedTodods = localStorage.getItem("todos");
-    if (savedTodods) {
-      return JSON.parse(savedTodods);
-    } else return initialTasks;
+    const savedTodos = localStorage.getItem("todos");
+    return savedTodos ? JSON.parse(savedTodos) : initialTasks;
   };
 
   const [inputValue, setInputValue] = useState("");
@@ -29,12 +27,13 @@ export default function Tasks() {
   }, [todos]);
 
   const handleDelete = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    // setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   const toggleCompleted = (id) => {
-    setTodos(
-      todos.map((todo) =>
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
