@@ -12,20 +12,20 @@
   @include breakpoint(large) {
     width: 40%;
   }
-  
+
   .item {
     display: flex;
     align-items: center;
     background-color: var(--task-bg);
-    padding: rem(5) rem(20);
+    padding: rem(20) rem(20);
     min-height: rem(50);
   }
 
   &__main {
-
     .task {
       border-bottom: 1px solid var(--task-border);
       color: var(--text-active);
+      transition: color 500ms ease-in-out;
 
       &:first-child {
         border-top-left-radius: var(--border-radius-size);
@@ -47,6 +47,12 @@
         flex-grow: 1;
       }
 
+      &.is-dragging {
+        background-color: var(--isdragging-task);
+        border-radius: var(--border-radius-size);
+        border: none;
+      }
+
       .delete_btn {
         float: right;
         margin-left: auto;
@@ -66,7 +72,7 @@
     }
 
     #add_task {
-      margin-bottom: rem(15);
+      margin-bottom: rem(20);
 
       input[type="text"] {
         width: 100%;
@@ -91,8 +97,9 @@
     font-family: inherit;
     padding: 0 rem(20);
     color: var(--text-inactive);
-    margin-bottom: rem(15);
+    margin-bottom: rem(20);
     position: relative;
+    height: rem(63);
 
     .items_count {
       font-size: rem(13);
@@ -108,10 +115,10 @@
     .footer_filters {
       gap: 8px;
       position: absolute;
-      top: rem(50);
+      top: rem(64);
       left: 0;
       width: 100%;
-      margin-top: rem(15);
+      margin-top: rem(20);
       border-radius: var(--border-radius-size);
       justify-content: center;
 
@@ -127,6 +134,7 @@
         position: relative;
         top: 0;
         margin-top: 0;
+        padding: 0;
       }
     }
   }
@@ -151,6 +159,6 @@
   .tip {
     text-align: center;
     color: var(--text-inactive);
-    margin: rem(80) 0;
+    margin: rem(96) 0;
   }
 }

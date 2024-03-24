@@ -11,9 +11,13 @@ export default function TaskItem({ todo, index }) {
       draggableId={todo.id.toString()}
       index={index}
     >
-      {(provided) => (
+      {(provided, snapshot) => (
         <li
-          className={"task item " + (todo.completed ? "completed" : "active")}
+          className={
+            "task item " +
+            (todo.completed ? "completed " : "active ") +
+            (snapshot.isDragging && "is-dragging ")
+          }
           ref={provided.innerRef}
           {...provided.dragHandleProps}
           {...provided.draggableProps}

@@ -23,6 +23,7 @@
   // The default color scheme is dark, in case <body> doesn't have a dark/light class
   --background: var(--very-dark-blue);
   --task-bg: var(--very-dark-desaturated-blue);
+  --isdragging-task: var(--very-dark-grayish-blue);
   --text-active: var(--light-grayish-blue);
   --text-inactive: var(--dark-grayish-blue);
   --task-border: var(--dark-grayish-blue);
@@ -32,6 +33,7 @@
 body.light {
   --background: var(--very-light-grayish-blue-l);
   --task-bg: var(--very-light-gray-l);
+  --isdragging-task: var(--very-light-gray-l);
   --text-active: var(--very-dark-grayish-blue-l);
   --text-inactive: var(--light-grayish-blue-l);
   --task-border: var(--light-grayish-blue-l);
@@ -47,9 +49,10 @@ body.light {
 body.dark {
   --background: var(--very-dark-blue);
   --task-bg: var(--very-dark-desaturated-blue);
+  --isdragging-task: var(--very-dark-grayish-blue);
   --text-active: var(--light-grayish-blue);
   --text-inactive: var(--dark-grayish-blue);
-  --task-border: var(--dark-grayish-blue);
+  --task-border: var(--very-dark-grayish-blue2);
 
   #dark {
     display: none;
