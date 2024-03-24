@@ -22,12 +22,11 @@ export default function Tasks() {
   const [currentFilter, setCurrentFilter] = useState("all");
 
   useEffect(() => {
-    // Update todos
+    // Update local storage todos on every change on todos state
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   const handleDelete = (id) => {
-    // setTodos(todos.filter((todo) => todo.id !== id));
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
@@ -49,6 +48,14 @@ export default function Tasks() {
         return todos;
     }
   };
+
+  const clearCompletedTodos =(e) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed))
+  }
+
+  const completedTodosCount = () => {
+    return todos.filter((todo) => !todo.completed).length
+  }
 
   function handleOnDragEnd(result) {
     if (!result.destination) return;
@@ -76,15 +83,12 @@ export default function Tasks() {
             </div>
             <div className="app__footer item flex flex-d-r flex-jc-sb flex-ai-c border-r-bottom">
               <span className="items_count">
-                {todos.filter((todo) => !todo.completed).length} items Left
+                {completedTodosCount()} items Left
               </span>
               <TaskFilters />
               <button
                 className="footer_btn"
-                onClick={(e) => {
-                  setTodos(todos.filter((todo) => !todo.completed));
-                }}
-              >
+                onClick={(e) => clearCompletedTodos()}>            
                 Clear Completed
               </button>
             </div>
