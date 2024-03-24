@@ -24,7 +24,7 @@ function toggleTheme(theme) {
   document.body.className = theme;
 
   // Calling getComputedStyle forces the browser to redraw
-  const _ = window.getComputedStyle(css).opacity;
+  window.getComputedStyle(css).opacity;
   document.head.removeChild(css);
 }
 

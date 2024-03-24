@@ -49,7 +49,7 @@ export default function Tasks() {
     }
   };
 
-  const clearCompletedTodos =(e) => {
+  const clearCompletedTodos =() => {
     setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed))
   }
 
@@ -88,7 +88,7 @@ export default function Tasks() {
               <TaskFilters />
               <button
                 className="footer_btn"
-                onClick={(e) => clearCompletedTodos()}>            
+                onClick={() => clearCompletedTodos()}>            
                 Clear Completed
               </button>
             </div>
