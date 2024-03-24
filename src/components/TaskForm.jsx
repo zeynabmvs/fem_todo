@@ -23,6 +23,7 @@ export default function TaskForm({ inputValue, handleInputValue }) {
         onChange={(e) => {
           handleInputValue(e.target.value);
         }}
+        autoComplete="off"
       />
     </form>
   );

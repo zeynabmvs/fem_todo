@@ -14,6 +14,7 @@ export default function ToggleThemeBtn() {
       onClick={() => {
         theme == "dark" ? setTheme("light") : setTheme("dark");
       }}
+      title={theme}
     >
       <img src={buttonImgSources[theme]} />
     </button>

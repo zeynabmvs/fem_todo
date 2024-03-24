@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import Tasks from "./components/Tasks";
 import ThemeContext from "./contexts";
 import ToggleThemeBtn from "./components/ToggleThemeBtn";
+import useThemeToggle from "./hooks/useThemeToggle";
 
 function App() {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    document.body.className = theme;
+    useThemeToggle(theme);
   }, [theme]);
 
   return (
