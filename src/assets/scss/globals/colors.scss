@@ -21,12 +21,12 @@
   --very-dark-grayish-blue2: hsl(237, 14%, 26%);
 
   // The default color scheme is dark, in case <body> doesn't have a dark/light class
-  --background: var(--very-dark-blue);
-  --task-bg: var(--very-dark-desaturated-blue);
-  --isdragging-task: var(--very-dark-grayish-blue);
-  --text-active: var(--light-grayish-blue);
-  --text-inactive: var(--dark-grayish-blue);
-  --task-border: var(--dark-grayish-blue);
+  // --background: var(--very-dark-blue);
+  // --task-bg: var(--very-dark-desaturated-blue);
+  // --isdragging-task: var(--very-dark-grayish-blue);
+  // --text-active: var(--light-grayish-blue);
+  // --text-inactive: var(--dark-grayish-blue);
+  // --task-border: var(--dark-grayish-blue);
 }
 
 // These two classes are duplicates of above styles
@@ -41,9 +41,6 @@ body.light {
   #light {
     display: none;
   }
-
-  --background-img-mobile: url("/images/bg-mobile-light.jpg");
-  --background-img-desktop: url("/images/bg-desktop-light.jpg");
 }
 
 body.dark {
@@ -57,7 +54,4 @@ body.dark {
   #dark {
     display: none;
   }
-
-  --background-img-mobile: url("/images/bg-mobile-dark.jpg");
-  --background-img-desktop: url("/images/bg-desktop-dark.jpg");
 }
