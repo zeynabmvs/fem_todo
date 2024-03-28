@@ -30,47 +30,13 @@ export default function ToggleThemeBtn() {
     }
   }
 
-  // function handleToggleBtn() {
-  //   // create a temporarys stylesheet for no-transition
-  //   const css = document.createElement("style");
-  //   css.type = "text/css";
-  //   css.appendChild(
-  //     document.createTextNode(
-  //       `* {
-  //            -webkit-transition: none !important;
-  //            -moz-transition: none !important;
-  //            -o-transition: none !important;
-  //            -ms-transition: none !important;
-  //            transition: none !important;
-  //         }`
-  //     )
-  //   );
-  //   document.head.appendChild(css);
-
-  //   toggleTheme();
-
-  //   // Calling getComputedStyle forces the browser to redraw
-  //   window.getComputedStyle(css).opacity;
-  //   document.head.removeChild(css);
-  // }
-
   useEffect(() => {
-    // const storageTheme = localStorage.getItem("theme");
     const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    // let currentTheme;
-
-    // if (storageTheme) {
-    //   currentTheme = storageTheme;
-    // } else {
-    //   currentTheme = darkModeQuery.matches ? "dark" : "light";
-    // }
-
-    // document.body.className = currentTheme;
-    // setTheme(currentTheme);
-
     function handleColorPrefer(e) {
-      e.matches ? setTheme("dark") : setTheme("light");
+      if (!'theme' in localStorage) {
+        e.matches ? setTheme("dark") : setTheme("light");
+      }
     }
 
     // listening for changes in prefer color scheme
