@@ -11,7 +11,7 @@ export default function ToggleThemeBtn() {
       currentTheme = storageTheme;
     } else {
       const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-      currentTheme = darkModeQuery.matches ? "dark" : "light";
+      currentTheme = darkModeQuery.matches ? "light" : "dark";
     }
 
     return currentTheme

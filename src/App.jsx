@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Tasks from "./components/Tasks";
 import ToggleThemeBtn from "./components/ToggleThemeBtn";
 
